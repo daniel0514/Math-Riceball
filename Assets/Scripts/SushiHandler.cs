@@ -10,6 +10,7 @@ public class SushiHandler : MonoBehaviour {
     {
         PlayerPrefs.SetInt("result", 0);
         PlayerPrefs.SetString("op", null);
+        PlayerPrefs.Save();
         _Rigidbody2D = this.GetComponent<Rigidbody2D>();
     }
     

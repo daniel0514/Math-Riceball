@@ -21,9 +21,9 @@ public class Rice3Handler : MonoBehaviour{
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        int result = PlayerPrefs.GetInt("result");
-        string op = PlayerPrefs.GetString("op");
-        if(op != null)
+        int result = ResultAndOpsHandler.result;
+        string op = ResultAndOpsHandler.ops;
+        if (op != null)
         {
             switch (op)
             {
@@ -42,12 +42,13 @@ public class Rice3Handler : MonoBehaviour{
                 default:
                     break;
             }
-            PlayerPrefs.SetInt("result", result);
-            PlayerPrefs.SetString("op", null);
+            ResultAndOpsHandler.ops = null;
+            ResultAndOpsHandler.result = result;
         } else
         {
             //Load End Game Screen;
         }
+        Debug.Log("Result is : " + ResultAndOpsHandler.result + "\nOperator is : " + ResultAndOpsHandler.ops);
         Destroy(this.gameObject);
     }
 }

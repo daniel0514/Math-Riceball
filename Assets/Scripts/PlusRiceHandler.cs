@@ -20,8 +20,7 @@ public class PlusRiceHandler : MonoBehaviour {
 
     void OnCollisionEnter2D()
     {
-        string cur_op = PlayerPrefs.GetString("op");
-        Debug.Log("OPS previous op is " + cur_op);
+        string cur_op = ResultAndOpsHandler.ops;
 
         if (cur_op != null)
         {
@@ -29,8 +28,9 @@ public class PlusRiceHandler : MonoBehaviour {
         }
         else if (cur_op == null)
         {
-            PlayerPrefs.SetString("op", op);
+            ResultAndOpsHandler.ops = op;
         }
+        Debug.Log("Result is : " + ResultAndOpsHandler.result + "\nOperator is : " + ResultAndOpsHandler.ops);
 
         Destroy(this.gameObject);
 
