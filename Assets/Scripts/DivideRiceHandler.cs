@@ -2,10 +2,11 @@
 using System.Collections;
 
 public class DivideRiceHandler : MonoBehaviour {
-
+    string op;
     void Start()
     {
-        this.transform.position = Vector3.up * 2.0f * Random.Range(-1.0f, 1.0f) + Vector3.right * 13.0f;
+        op = "/";
+        this.transform.position = Vector3.up * 2.0f * Random.Range(-1.0f, 1.0f) + Vector3.right * 20.0f;
     }
 
     // Update is called once per frame
@@ -28,7 +29,7 @@ public class DivideRiceHandler : MonoBehaviour {
         }
         else if (cur_op == null)
         {
-            PlayerPrefs.SetString("op", "/");
+            PlayerPrefs.SetString("op", op);
         }
 
         Destroy(this.gameObject);

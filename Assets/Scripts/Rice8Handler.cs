@@ -7,7 +7,7 @@ public class Rice8Handler : MonoBehaviour{
     void Start()
     {
         value = 8;
-        this.transform.position = Vector3.up * 2.0f * Random.Range(-1.0f, 1.0f) + Vector3.right * 10.0f;
+        this.transform.position = Vector3.up * 2.0f * Random.Range(-1.0f, 1.0f) + Vector3.right * 20.0f;
     }
 
     // Update is called once per frame
