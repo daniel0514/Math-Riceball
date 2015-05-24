@@ -10,7 +10,7 @@ public class SpawnRiceHandler : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        //rice_types = new GameObject[4];
+ 
     }
 	
 	// Update is called once per frame
@@ -19,7 +19,7 @@ public class SpawnRiceHandler : MonoBehaviour {
         if(spawnTimer < 0.0f)
         {
             spawnTimer = timeBetweenRice;
-            int i = Random.Range(0, rice_types.Length - 1);
+            int i = Random.Range(0, rice_types.Length);
             Instantiate(rice_types[i], Vector3.right * 20f, Quaternion.identity);
         }
 	}
