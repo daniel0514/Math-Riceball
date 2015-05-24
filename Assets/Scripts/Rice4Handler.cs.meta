@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 9f69b8459da85784b9d2924ec16a8c62
 timeCreated: 1432451115
+=======
+guid: 76744278895835745a90fee62391eb57
+timeCreated: 1432458601
+>>>>>>> john
 licenseType: Pro
 MonoImporter:
   serializedVersion: 2

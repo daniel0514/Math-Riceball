@@ -50,4 +50,5 @@ public class Rice7Handler : MonoBehaviour{
         }
         Destroy(this.gameObject);
     }
+
 }
