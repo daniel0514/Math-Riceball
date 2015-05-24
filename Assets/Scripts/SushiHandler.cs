@@ -3,10 +3,13 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class SushiHandler : MonoBehaviour {
+
     Rigidbody2D _Rigidbody2D;
     // Use this for initialization
     void Start()
     {
+        PlayerPrefs.SetInt("result", 0);
+        PlayerPrefs.SetString("op", null);
         _Rigidbody2D = this.GetComponent<Rigidbody2D>();
     }
     
@@ -23,4 +26,6 @@ public class SushiHandler : MonoBehaviour {
 
         _Rigidbody2D.rotation = _Rigidbody2D.velocity.y * 2.0f;
     }
+
+
 }
