@@ -5,7 +5,11 @@ using System.Collections;
 public class TimerHandler : MonoBehaviour
 {
 
+<<<<<<< HEAD
     static float timer = 10f;
+=======
+    static float timer = 20.00f;
+>>>>>>> 86fc1b6f60085051b9268a8885223921a60c362f
     public Text text_box;
     public GameObject endMenu;
 
