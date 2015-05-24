@@ -5,7 +5,7 @@ using System.Collections;
 public class TimerHandler : MonoBehaviour
 {
 
-    static float timer = 60.00f;
+    static float timer = 20.00f;
     public Text text_box;
 
     // Use this for initialization
@@ -18,7 +18,7 @@ public class TimerHandler : MonoBehaviour
     void Update()
     {
         timer -= Time.deltaTime;
-        text_box.text = timer.ToString("0");
+        text_box.text = timer.ToString("0.0");
 
         if (timer == 0)
         {
