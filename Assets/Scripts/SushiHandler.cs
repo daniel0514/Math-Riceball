@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class SushiHandler : MonoBehaviour {
 
+    public GameObject menu;
+    public static GameObject canvas_menu;
     Rigidbody2D _Rigidbody2D;
     // Use this for initialization
     void Start()
@@ -12,6 +14,7 @@ public class SushiHandler : MonoBehaviour {
         PlayerPrefs.SetString("op", null);
         PlayerPrefs.Save();
         _Rigidbody2D = this.GetComponent<Rigidbody2D>();
+        canvas_menu = menu;
     }
     
 
@@ -26,6 +29,11 @@ public class SushiHandler : MonoBehaviour {
         }
 
         _Rigidbody2D.rotation = _Rigidbody2D.velocity.y * 2.0f;
+    }
+    void OnBecameInvisible()
+    {
+        Time.timeScale = 0.0f;
+        menu.SetActive(true);
     }
 
 

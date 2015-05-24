@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PlusRiceHandler : MonoBehaviour {
     string op;
+    public GameObject canvas_menu = null;
     void Start()
     {
         op = "+";
@@ -20,11 +21,17 @@ public class PlusRiceHandler : MonoBehaviour {
 
     void OnCollisionEnter2D()
     {
+        if (canvas_menu == null)
+        {
+            canvas_menu = SushiHandler.canvas_menu;
+        }
         string cur_op = ResultAndOpsHandler.ops;
 
         if (cur_op != null)
         {
-             //EndGame();
+            //EndGame();
+            canvas_menu.SetActive(true);
+            Time.timeScale = 0.0f;
         }
         else if (cur_op == null)
         {

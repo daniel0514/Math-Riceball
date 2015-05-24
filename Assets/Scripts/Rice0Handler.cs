@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Rice0Handler : MonoBehaviour{
     int value;
+    public GameObject canvas_menu = null;
     public ResultAndOpsHandler rAo;
     // Use this for initialization
     void Start()
@@ -22,6 +23,10 @@ public class Rice0Handler : MonoBehaviour{
 
     void OnCollisionEnter2D(Collision2D other)
     {
+        if (canvas_menu == null)
+        {
+            canvas_menu = SushiHandler.canvas_menu;
+        }
         int result = ResultAndOpsHandler.result;
         string op = ResultAndOpsHandler.ops;
         if (op != null)
@@ -39,6 +44,8 @@ public class Rice0Handler : MonoBehaviour{
                     break;
                 case "/":
                     //Load EndGame
+                    canvas_menu.SetActive(true);
+                    Time.timeScale = 0.0f;
                     Debug.Log("EndGame");
                     break;
                 default:
@@ -49,6 +56,8 @@ public class Rice0Handler : MonoBehaviour{
         } else
         {
             //Load End Game Screen;
+            canvas_menu.SetActive(true);
+            Time.timeScale = 0.0f;
         }
         Debug.Log("Result is : " + ResultAndOpsHandler.result + "\nOperator is : " + ResultAndOpsHandler.ops);
         Destroy(this.gameObject);
