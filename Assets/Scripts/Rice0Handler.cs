@@ -37,7 +37,8 @@ public class Rice0Handler : MonoBehaviour{
                     result *= value;
                     break;
                 case "/":
-                    result /= value;
+                    //Load EndGame
+                    Debug.Log("EndGame");
                     break;
                 default:
                     break;
