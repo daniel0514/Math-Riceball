@@ -6,7 +6,7 @@ public class MinusHandler : MonoBehaviour{
     // Use this for initialization
     void Start()
     {
-        op = "-"
+        op = "-";
         this.transform.position = Vector3.up * 2.0f * Random.Range(-1.0f, 1.0f) + Vector3.right * 10.0f;
     }
 
@@ -24,8 +24,6 @@ public class MinusHandler : MonoBehaviour{
         string op = PlayerPrefs.GetString("op");
         if(op == null)
         {
-            switch (op)
-            {
             PlayerPrefs.SetString("op", null);
         } else
         {
