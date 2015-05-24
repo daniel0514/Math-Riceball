@@ -2,11 +2,11 @@
 using System.Collections;
 
 public class MinusHandler : MonoBehaviour{
-    string op;
+    string ops;
     // Use this for initialization
     void Start()
     {
-        op = "-";
+        ops = "-";
         this.transform.position = Vector3.up * 2.0f * Random.Range(-1.0f, 1.0f) + Vector3.right * 10.0f;
     }
 
@@ -24,7 +24,7 @@ public class MinusHandler : MonoBehaviour{
         string op = PlayerPrefs.GetString("op");
         if(op == null)
         {
-            PlayerPrefs.SetString("op", null);
+            PlayerPrefs.SetString("op", ops);
         } else
         {
             //Load End Game Screen;
