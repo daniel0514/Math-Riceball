@@ -21,6 +21,7 @@ public class PlusRiceHandler : MonoBehaviour {
     void OnCollisionEnter2D()
     {
         string cur_op = PlayerPrefs.GetString("op");
+        Debug.Log("OPS previous op is " + cur_op);
 
         if (cur_op != null)
         {

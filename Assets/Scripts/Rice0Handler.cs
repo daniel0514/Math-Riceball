@@ -23,7 +23,9 @@ public class Rice0Handler : MonoBehaviour{
     {
         int result = PlayerPrefs.GetInt("result");
         string op = PlayerPrefs.GetString("op");
-        if(op != null)
+        Debug.Log("OPS previous result is " + result);
+        Debug.Log("OPS previous op is " + op);
+        if (op != null)
         {
             switch (op)
             {
