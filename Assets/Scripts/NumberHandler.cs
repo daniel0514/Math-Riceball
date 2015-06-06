@@ -9,7 +9,6 @@ public class NumberHandler : MonsterHandler
     // Use this for initialization
     protected override void Start() {
         base.Start();
-        Debug.Log("Number is " + value);
     }
 	
     void OnCollisionEnter2D(Collision2D other)
@@ -25,12 +24,21 @@ public class NumberHandler : MonsterHandler
             switch (op)
             {
                 case "+":
+                    if (ResultAndOpsHandler.hitCount != 0)
+                    {
+                        ResultAndOpsHandler.equation = "(" + ResultAndOpsHandler.equation + " + " + value + ")";
+                    } else
+                    {
+                        ResultAndOpsHandler.equation = value.ToString();
+                    }
                     result += value;
                     break;
                 case "-":
+                    ResultAndOpsHandler.equation = "(" + ResultAndOpsHandler.equation + " - " + value + ")";
                     result -= value;
                     break;
                 case "*":
+                    ResultAndOpsHandler.equation = "(" + ResultAndOpsHandler.equation + " * " + value + ")";
                     result *= value;
                     break;
                 case "/":
@@ -38,10 +46,10 @@ public class NumberHandler : MonsterHandler
                     {
                         canvas_menu.SetActive(true);
                         Time.timeScale = 0.0f;
-                        Debug.Log("EndGame");
                         break;
                     } else
                     {
+                        ResultAndOpsHandler.equation = "(" + ResultAndOpsHandler.equation + " / " + value + ")";
                         result /= value;
                         break;
                     }
@@ -58,6 +66,8 @@ public class NumberHandler : MonsterHandler
             Time.timeScale = 0.0f;
         }
         Debug.Log("Result is : " + ResultAndOpsHandler.result + "\nOperator is : " + ResultAndOpsHandler.ops);
+        Debug.Log("Equation  is : " + ResultAndOpsHandler.equation);
+        ResultAndOpsHandler.hitCount++;
         Destroy(this.gameObject);
     }
 }

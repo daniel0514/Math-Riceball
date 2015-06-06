@@ -29,7 +29,7 @@ public class OperatorHandler : MonsterHandler
             ResultAndOpsHandler.ops = op;
         }
         Debug.Log("Result is : " + ResultAndOpsHandler.result + "\nOperator is : " + ResultAndOpsHandler.ops);
-
+        ResultAndOpsHandler.hitCount++;
         Destroy(this.gameObject);
 
     }
