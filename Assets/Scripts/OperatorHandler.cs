@@ -3,7 +3,7 @@ using System.Collections;
 
 public class OperatorHandler : MonsterHandler
 {
-    string op;
+    protected string op;
     public GameObject canvas_menu = null;
     // Use this for initialization
     protected override void Start () {
