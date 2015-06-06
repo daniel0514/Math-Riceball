@@ -6,7 +6,8 @@ public class OperatorHandler : MonsterHandler
     protected string op;
     public GameObject canvas_menu = null;
     // Use this for initialization
-    protected override void Start () {
+    protected override void Start()
+    {
         base.Start();
     }
 
@@ -16,21 +17,42 @@ public class OperatorHandler : MonsterHandler
         {
             canvas_menu = SushiHandler.canvas_menu;
         }
-        string cur_op = ResultAndOpsHandler.ops;
+        string last_op = ResultAndOpsHandler.last_op;
+        int last_num = ResultAndOpsHandler.last_num;
+        int result = ResultAndOpsHandler.result;
 
-        if (cur_op != null)
+        if (last_num == -1) //if there is no last_num, replace the last operator with the one you just hit
         {
-            //EndGame();
-            canvas_menu.SetActive(true);
-            Time.timeScale = 0.0f;
+            ResultAndOpsHandler.last_op = op;
         }
-        else if (cur_op == null)
+        else //if there is a last_num, update the result, set last_op to the op, and set last_num to -1
         {
-            ResultAndOpsHandler.ops = op;
+            switch (last_op)
+            {
+                case "+":
+                    result += last_num;
+                    break;
+                case "-":
+                    result -= last_num;
+                    break;
+                case "*":
+                    result *= last_num;
+                    break;
+                case "/":
+                    //divide by zero is handled in NumberHandler
+                    result /= last_num;
+                    break;
+            }
+
+            ResultAndOpsHandler.result = result;
+            ResultAndOpsHandler.last_op = op;
+            ResultAndOpsHandler.last_num = -1;
         }
-        Debug.Log("Result is : " + ResultAndOpsHandler.result + "\nOperator is : " + ResultAndOpsHandler.ops);
+
+        Debug.Log("Result is : " + ResultAndOpsHandler.result + "\nlast_op is : " + ResultAndOpsHandler.last_op + "\nlast_num is : " + ResultAndOpsHandler.last_num);
 
         Destroy(this.gameObject);
 
     }
 }
+

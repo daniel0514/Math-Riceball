@@ -9,7 +9,6 @@ public class NumberHandler : MonsterHandler
     // Use this for initialization
     protected override void Start() {
         base.Start();
-        Debug.Log("Number is " + value);
     }
 	
     void OnCollisionEnter2D(Collision2D other)
@@ -18,46 +17,21 @@ public class NumberHandler : MonsterHandler
         {
             canvas_menu = SushiHandler.canvas_menu;
         }
-        int result = ResultAndOpsHandler.result;
-        string op = ResultAndOpsHandler.ops;
-        if (op != null)
+
+        //End game if you divide by zero
+
+        if (ResultAndOpsHandler.last_op == "/" && value == 0)
         {
-            switch (op)
-            {
-                case "+":
-                    result += value;
-                    break;
-                case "-":
-                    result -= value;
-                    break;
-                case "*":
-                    result *= value;
-                    break;
-                case "/":
-                    if(value == 0)
-                    {
-                        canvas_menu.SetActive(true);
-                        Time.timeScale = 0.0f;
-                        Debug.Log("EndGame");
-                        break;
-                    } else
-                    {
-                        result /= value;
-                        break;
-                    }
-                default:
-                    break;
-            }
-            ResultAndOpsHandler.ops = null;
-            ResultAndOpsHandler.result = result;
-        }
-        else
-        {
-            //Load End Game Screen;
             canvas_menu.SetActive(true);
             Time.timeScale = 0.0f;
+            Debug.Log("EndGame");
         }
-        Debug.Log("Result is : " + ResultAndOpsHandler.result + "\nOperator is : " + ResultAndOpsHandler.ops);
+
+
+        ResultAndOpsHandler.last_num = value;
+
+        Debug.Log("Result is : " + ResultAndOpsHandler.result + "\nlast_op is : " + ResultAndOpsHandler.last_op + "\nlast_num is : " + ResultAndOpsHandler.last_num);
+
         Destroy(this.gameObject);
     }
 }

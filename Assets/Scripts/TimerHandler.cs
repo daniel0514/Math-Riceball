@@ -12,7 +12,7 @@ public class TimerHandler : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        timer = 15.0f;
+        timer = 600.0f;
     }
 
     // Update is called once per frame

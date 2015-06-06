@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Rice9Handler : NumberHandler{
+public class Rice9Handler : NumberHandler {
     // Use this for initialization
     protected override void Start()
     {

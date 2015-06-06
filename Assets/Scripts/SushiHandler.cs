@@ -32,8 +32,38 @@ public class SushiHandler : MonoBehaviour {
     }
     void OnBecameInvisible()
     {
+        //If there is a remaining number, update the result with it before you go to the end screen.
+        int last_num = ResultAndOpsHandler.last_num;
+        string last_op = ResultAndOpsHandler.last_op;
+        int result = ResultAndOpsHandler.result;
+
+        if (last_num != -1)
+        {
+            switch (last_op)
+            {
+                case "+":
+                    result += last_num;
+                    break;
+                case "-":
+                    result -= last_num;
+                    break;
+                case "*":
+                    result *= last_num;
+                    break;
+                case "/":
+                    //divide by zero is handled in NumberHandler
+                    result /= last_num;
+                    break;
+            }
+
+            ResultAndOpsHandler.result = result;
+        }
+
+
         Time.timeScale = 0.0f;
         menu.SetActive(true);
+        Debug.Log("Result is : " + ResultAndOpsHandler.result + "\nlast_op is : " + ResultAndOpsHandler.last_op + "\nlast_num is : " + ResultAndOpsHandler.last_num);
+
     }
 
 
