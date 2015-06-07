@@ -9,6 +9,7 @@ public class InputHandler : MonoBehaviour {
     public GameObject WinMenu;
     public GameObject LoseMenu;
 
+
     void LockInput(UnityEngine.UI.InputField input)
     {
         if (input.text.Length > 0)
@@ -20,7 +21,10 @@ public class InputHandler : MonoBehaviour {
             }
             else
             {
-                LoseMenu.SetActive(true);
+                inputField.gameObject.SetActive(false);
+                //inputField.gameObject.SetActive(false);
+               // inputField.gameObject.GetComponent<Renderer>().enabled = false;
+                //LoseMenu.SetActive(true);
                 Debug.Log("wrong number entered");
             }    
                     
