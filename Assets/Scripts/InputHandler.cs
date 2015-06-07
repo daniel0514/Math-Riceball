@@ -8,6 +8,8 @@ public class InputHandler : MonoBehaviour {
     public UnityEngine.UI.Text textDisplay;
     public GameObject WinMenu;
     public GameObject LoseMenu;
+    public GameObject _inputfieldCanvas;
+    public GameObject score;
 
 
     void LockInput(UnityEngine.UI.InputField input)
@@ -16,15 +18,18 @@ public class InputHandler : MonoBehaviour {
         {
             if (input.text.Equals(ResultAndOpsHandler.result.ToString()))
             {
+                _inputfieldCanvas.SetActive(false);
                 WinMenu.SetActive(true);
                 Debug.Log("==");
+                //score.GetComponent<GUIText>() = ResultAndOpsHandler.result.ToString();
             }
             else
             {
-                inputField.gameObject.SetActive(false);
                 //inputField.gameObject.SetActive(false);
-               // inputField.gameObject.GetComponent<Renderer>().enabled = false;
-                //LoseMenu.SetActive(true);
+                //inputField.gameObject.SetActive(false);
+                // inputField.gameObject.GetComponent<Renderer>().enabled = false;
+                _inputfieldCanvas.SetActive(false);
+                LoseMenu.SetActive(true);
                 Debug.Log("wrong number entered");
             }    
                     
