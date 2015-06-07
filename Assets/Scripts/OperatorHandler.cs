@@ -5,6 +5,7 @@ public class OperatorHandler : MonsterHandler
 {
     protected string op;
     public GameObject canvas_menu = null;
+    bool firstAddition = true;
     // Use this for initialization
     protected override void Start()
     {
@@ -21,6 +22,14 @@ public class OperatorHandler : MonsterHandler
         int last_num = ResultAndOpsHandler.last_num;
         int result = ResultAndOpsHandler.result;
 
+        if (last_op == "")
+        {
+            Debug.Log("Result is : " + ResultAndOpsHandler.result + "\nlast_op is : " + ResultAndOpsHandler.last_op + "\nlast_num is : " + ResultAndOpsHandler.last_num);
+            Destroy(this.gameObject);
+            return;
+        }
+
+
         if (last_num == -1) //if there is no last_num, replace the last operator with the one you just hit
         {
             ResultAndOpsHandler.last_op = op;
@@ -30,7 +39,16 @@ public class OperatorHandler : MonsterHandler
             switch (last_op)
             {
                 case "+":
-                    ResultAndOpsHandler.equation = "(" + ResultAndOpsHandler.equation + " + " + last_num + ")";
+                    if (firstAddition)
+                    {
+                        ResultAndOpsHandler.equation = last_num.ToString();
+                        firstAddition = false;
+                    }
+                    else
+                    {
+                        ResultAndOpsHandler.equation = "(" + ResultAndOpsHandler.equation + " + " + last_num + ")";
+                    }
+                    
                     result += last_num;
                     break;
                 case "-":

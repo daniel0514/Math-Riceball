@@ -18,6 +18,12 @@ public class NumberHandler : MonsterHandler
             canvas_menu = SushiHandler.canvas_menu;
         }
 
+        if (ResultAndOpsHandler.last_op == "")
+        {
+            ResultAndOpsHandler.last_op = "+";
+            ResultAndOpsHandler.last_num = value;
+        }
+
         //End game if you divide by zero
 
         if (ResultAndOpsHandler.last_op == "/" && value == 0)
