@@ -3,10 +3,12 @@ using System.Collections;
 
 public class OperatorHandler : MonsterHandler
 {
-    string op;
+    protected string op;
     public GameObject canvas_menu = null;
+    bool firstAddition = true;
     // Use this for initialization
-    protected override void Start () {
+    protected override void Start()
+    {
         base.Start();
     }
 
@@ -16,21 +18,64 @@ public class OperatorHandler : MonsterHandler
         {
             canvas_menu = SushiHandler.canvas_menu;
         }
-        string cur_op = ResultAndOpsHandler.ops;
+        string last_op = ResultAndOpsHandler.last_op;
+        int last_num = ResultAndOpsHandler.last_num;
+        int result = ResultAndOpsHandler.result;
 
-        if (cur_op != null)
+        if (last_op == "")
         {
-            //EndGame();
-            canvas_menu.SetActive(true);
-            Time.timeScale = 0.0f;
+            Debug.Log("Result is : " + ResultAndOpsHandler.result + "\nlast_op is : " + ResultAndOpsHandler.last_op + "\nlast_num is : " + ResultAndOpsHandler.last_num);
+            Destroy(this.gameObject);
+            return;
         }
-        else if (cur_op == null)
+
+
+        if (last_num == -1) //if there is no last_num, replace the last operator with the one you just hit
         {
-            ResultAndOpsHandler.ops = op;
+            ResultAndOpsHandler.last_op = op;
         }
-        Debug.Log("Result is : " + ResultAndOpsHandler.result + "\nOperator is : " + ResultAndOpsHandler.ops);
+        else //if there is a last_num, update the result, set last_op to the op, and set last_num to -1
+        {
+            switch (last_op)
+            {
+                case "+":
+                    if (firstAddition)
+                    {
+                        ResultAndOpsHandler.equation = last_num.ToString();
+                        firstAddition = false;
+                    }
+                    else
+                    {
+                        ResultAndOpsHandler.equation = "(" + ResultAndOpsHandler.equation + " + " + last_num + ")";
+                    }
+                    
+                    result += last_num;
+                    break;
+                case "-":
+                    ResultAndOpsHandler.equation = "(" + ResultAndOpsHandler.equation + " - " + last_num + ")";
+                    result -= last_num;
+                    break;
+                case "*":
+                    ResultAndOpsHandler.equation = "(" + ResultAndOpsHandler.equation + " * " + last_num + ")";
+                    result *= last_num;
+                    break;
+                case "/":
+                    ResultAndOpsHandler.equation = "(" + ResultAndOpsHandler.equation + " / " + last_num + ")";
+                    //divide by zero is handled in NumberHandler
+                    result /= last_num;
+                    break;
+            }
+            Debug.Log("Equation is " + ResultAndOpsHandler.equation);
+
+            ResultAndOpsHandler.result = result;
+            ResultAndOpsHandler.last_op = op;
+            ResultAndOpsHandler.last_num = -1;
+        }
+
+        Debug.Log("Result is : " + ResultAndOpsHandler.result + "\nlast_op is : " + ResultAndOpsHandler.last_op + "\nlast_num is : " + ResultAndOpsHandler.last_num);
 
         Destroy(this.gameObject);
 
     }
 }
+
