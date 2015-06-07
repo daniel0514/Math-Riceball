@@ -30,19 +30,24 @@ public class OperatorHandler : MonsterHandler
             switch (last_op)
             {
                 case "+":
+                    ResultAndOpsHandler.equation = "(" + ResultAndOpsHandler.equation + " + " + last_num + ")";
                     result += last_num;
                     break;
                 case "-":
+                    ResultAndOpsHandler.equation = "(" + ResultAndOpsHandler.equation + " - " + last_num + ")";
                     result -= last_num;
                     break;
                 case "*":
+                    ResultAndOpsHandler.equation = "(" + ResultAndOpsHandler.equation + " * " + last_num + ")";
                     result *= last_num;
                     break;
                 case "/":
+                    ResultAndOpsHandler.equation = "(" + ResultAndOpsHandler.equation + " / " + last_num + ")";
                     //divide by zero is handled in NumberHandler
                     result /= last_num;
                     break;
             }
+            Debug.Log("Equation is " + ResultAndOpsHandler.equation);
 
             ResultAndOpsHandler.result = result;
             ResultAndOpsHandler.last_op = op;
