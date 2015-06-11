@@ -20,7 +20,30 @@ public class InputHandler : MonoBehaviour {
             {
                 _inputfieldCanvas.SetActive(false);
                 WinMenu.SetActive(true);
-                Debug.Log("==");
+                Debug.Log("=="); int curScore = ResultAndOpsHandler.result;
+                if (PlayerPrefs.HasKey("HighestScore"))
+                {
+                    int highestScore = PlayerPrefs.GetInt("HighestScore");
+                    Debug.Log("HighestScore is : " + highestScore);
+                    Debug.Log("CurrentScore is : " + curScore);
+
+                    if (curScore > highestScore)
+                    {
+                        Debug.Log("Current Score higher");
+                        PlayerPrefs.SetInt("HighestScore", curScore);
+                        PlayerPrefs.Save();
+                    }
+                    else
+                    {
+                        Debug.Log("Current Score Lower");
+                    }
+                }
+                else
+                {
+                    Debug.Log("No Saved Score");
+                    PlayerPrefs.SetInt("HighestScore", curScore);
+                    PlayerPrefs.Save();
+                }
                 //score.GetComponent<GUIText>() = ResultAndOpsHandler.result.ToString();
             }
             else
