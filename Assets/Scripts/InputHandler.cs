@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class InputHandler : MonoBehaviour {
 
@@ -18,9 +19,10 @@ public class InputHandler : MonoBehaviour {
         {
             if (input.text.Equals(ResultAndOpsHandler.result.ToString()))
             {
+                int curScore = ResultAndOpsHandler.result;
                 _inputfieldCanvas.SetActive(false);
                 WinMenu.SetActive(true);
-                Debug.Log("=="); int curScore = ResultAndOpsHandler.result;
+                Debug.Log("==");
                 if (PlayerPrefs.HasKey("HighestScore"))
                 {
                     int highestScore = PlayerPrefs.GetInt("HighestScore");
