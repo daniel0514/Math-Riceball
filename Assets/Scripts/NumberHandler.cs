@@ -4,8 +4,8 @@ using System.Collections;
 public class NumberHandler : MonsterHandler
 {
     protected int value;
-    public GameObject canvas_menu = null;
-
+    public GameObject canvas_menu = null; 
+    //public GameObject ZeroDivMenu = InputHandler.
     // Use this for initialization
     protected override void Start() {
         base.Start();
@@ -25,10 +25,12 @@ public class NumberHandler : MonsterHandler
         }
 
         //End game if you divide by zero
-
+        
         if (ResultAndOpsHandler.last_op == "/" && value == 0)
         {
-            canvas_menu.SetActive(true);
+            SushiHandler.divByZero_Menu.SetActive(true);
+            ResultAndOpsHandler.bDivByzero = true;
+            //ResultAndOpsHandler.last_num = 1;
             Time.timeScale = 0.0f;
             Debug.Log("EndGame");
         }

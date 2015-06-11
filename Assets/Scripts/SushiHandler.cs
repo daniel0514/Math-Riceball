@@ -5,15 +5,20 @@ using UnityEngine.UI;
 public class SushiHandler : MonoBehaviour {
 
     public GameObject menu;
+    public GameObject divByZeroMenu;
+
     public static GameObject canvas_menu;
+    public static GameObject divByZero_Menu;
     Rigidbody2D _Rigidbody2D;
     // Use this for initialization
     void Start()
     {
         _Rigidbody2D = this.GetComponent<Rigidbody2D>();
         canvas_menu = menu;
+        divByZero_Menu = divByZeroMenu;
+
     }
-    
+
 
     // Update is called once per frame
     void Update () {
@@ -62,7 +67,7 @@ public class SushiHandler : MonoBehaviour {
 
 
         Time.timeScale = 0.0f;
-        menu.SetActive(true);
+        if(menu != null) menu.SetActive(true);
         Debug.Log("Result is : " + ResultAndOpsHandler.result + "\nlast_op is : " + ResultAndOpsHandler.last_op + "\nlast_num is : " + ResultAndOpsHandler.last_num);
 
     }

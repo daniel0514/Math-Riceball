@@ -6,9 +6,11 @@ public class ResultAndOpsHandler : MonoBehaviour {
     public static string last_op;
     public static int last_num = -1;
     public static string equation;
+    public static bool bDivByzero = bDivByzero;
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
         result = 0;
         last_op = "";
         last_num = -1; //use -1 to mean "last_num is empty"
