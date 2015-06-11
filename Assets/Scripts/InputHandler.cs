@@ -29,6 +29,7 @@ public class InputHandler : MonoBehaviour {
 
                     if (curScore > highestScore)
                     {
+                        Debug.Log("Highest Score is " + highestScore);
                         PlayerPrefs.SetInt("HighestScore", curScore);
                         PlayerPrefs.Save();
                     }
