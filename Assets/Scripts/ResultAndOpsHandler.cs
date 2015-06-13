@@ -7,6 +7,7 @@ public class ResultAndOpsHandler : MonoBehaviour {
     public static int last_num = -1;
     public static string equation;
     public static bool bDivByzero = bDivByzero;
+    public static bool showEquation = false;
 
 
     // Use this for initialization

@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class EquationHandler : MonoBehaviour {
-    bool showEquation = false;
+    bool showEquation = ResultAndOpsHandler.showEquation;
     Text equationText;
 	// Use this for initialization
 	void Start () {
