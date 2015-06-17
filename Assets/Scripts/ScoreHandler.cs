@@ -12,7 +12,7 @@ public class ScoreHandler : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         int curScore = ResultAndOpsHandler.result;
-        scoreText.text = "Your Score is : " +  curScore.ToString();
+        scoreText.text = "Your Score : " +  curScore.ToString();
         if (PlayerPrefs.HasKey("HighestScore"))
         {
             int highestScore = PlayerPrefs.GetInt("HighestScore");
@@ -21,7 +21,7 @@ public class ScoreHandler : MonoBehaviour {
             {
                 Debug.Log("Beat HighestScore");
                 Debug.Log("Cur: " + curScore + " high" + highestScore);
-                scoreText.text = scoreText.text + "\nAnd You Beat Your \nHighest Score!\nHighest Score: " + highestScore;
+                scoreText.text = scoreText.text + "\nHighest Score: " + highestScore;
             } else
             {
                 Debug.Log("Did not beat");
