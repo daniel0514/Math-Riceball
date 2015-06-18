@@ -19,7 +19,7 @@ public class CurrentOperator : MonoBehaviour {
         switch (last_op)
         {
             case "+":
-                if (OperatorHandler.firstAddition)
+                if (ResultAndOpsHandler.firstAddition)
                     op.sprite = null;
                 else
                     op.sprite = ops[0];

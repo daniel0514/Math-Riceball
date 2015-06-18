@@ -5,7 +5,6 @@ public class OperatorHandler : MonsterHandler
 {
     protected string op;
     public GameObject canvas_menu = null;
-    public static bool firstAddition = true;
     // Use this for initialization
     protected override void Start()
     {
@@ -39,10 +38,10 @@ public class OperatorHandler : MonsterHandler
             switch (last_op)
             {
                 case "+":
-                    if (firstAddition)
+                    if (ResultAndOpsHandler.firstAddition)
                     {
                         ResultAndOpsHandler.equation = last_num.ToString();
-                        firstAddition = false;
+                        ResultAndOpsHandler.firstAddition = false;
                     }
                     else
                     {

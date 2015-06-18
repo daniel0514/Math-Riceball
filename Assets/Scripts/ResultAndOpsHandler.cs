@@ -7,10 +7,12 @@ public class ResultAndOpsHandler : MonoBehaviour {
     public static int last_num = -1;
     public static string equation;
     public static bool bDivByzero = bDivByzero;
+    public static bool firstAddition = true;
 
 
     // Use this for initialization
     void Start () {
+        firstAddition = true;
         result = 0;
         last_op = "";
         last_num = -1; //use -1 to mean "last_num is empty"
