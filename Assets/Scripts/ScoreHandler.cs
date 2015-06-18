@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 public class ScoreHandler : MonoBehaviour {
@@ -12,7 +11,7 @@ public class ScoreHandler : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         int curScore = ResultAndOpsHandler.result;
-        scoreText.text = "Your Score is : " +  curScore.ToString();
+        scoreText.text = "Your Score : " +  curScore.ToString();
         if (PlayerPrefs.HasKey("HighestScore"))
         {
             int highestScore = PlayerPrefs.GetInt("HighestScore");
@@ -21,7 +20,8 @@ public class ScoreHandler : MonoBehaviour {
             {
                 Debug.Log("Beat HighestScore");
                 Debug.Log("Cur: " + curScore + " high" + highestScore);
-                scoreText.text = scoreText.text + "Highest Score: " + highestScore +  "\n\n Almost Beat Your Highest Score!";
+                scoreText.text = scoreText.text + "\nHighest Score: " + highestScore;
+
             } else
             {
                 Debug.Log("Did not beat");
