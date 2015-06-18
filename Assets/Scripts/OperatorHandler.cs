@@ -5,7 +5,7 @@ public class OperatorHandler : MonsterHandler
 {
     protected string op;
     public GameObject canvas_menu = null;
-    bool firstAddition = true;
+    public static bool firstAddition = true;
     // Use this for initialization
     protected override void Start()
     {
