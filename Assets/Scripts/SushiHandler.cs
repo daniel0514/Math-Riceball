@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 public class SushiHandler : MonoBehaviour {
 
@@ -58,7 +59,14 @@ public class SushiHandler : MonoBehaviour {
                 case "/":
                     ResultAndOpsHandler.equation = "(" + ResultAndOpsHandler.equation + " / " + last_num + ")";
                     //divide by zero is handled in NumberHandler
-                    result /= last_num;
+                    try
+                    {
+                        result /= last_num;
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.Log("divide by zero reached");
+                    }
                     break;
             }
             Debug.Log("Equation is " + ResultAndOpsHandler.equation);
@@ -66,7 +74,7 @@ public class SushiHandler : MonoBehaviour {
         }
 
 
-        Time.timeScale = 0.0f;
+        if (ResultAndOpsHandler.bDivByzero != true) Time.timeScale = 0.0f;
         if(menu != null) menu.SetActive(true);
         Debug.Log("Result is : " + ResultAndOpsHandler.result + "\nlast_op is : " + ResultAndOpsHandler.last_op + "\nlast_num is : " + ResultAndOpsHandler.last_num);
 
