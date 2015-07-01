@@ -4,11 +4,11 @@ using UnityEngine.UI;
 
 public class MenuScript : MonoBehaviour
 {
-     Button startText;
+     public Button startText;
 
     void Start()
     {
-        startText = this.startText.GetComponent<Button>();
+        //startText = this.startText.GetComponent<Button>();
     }
     void Update()
     {
